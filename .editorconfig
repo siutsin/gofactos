@@ -1,0 +1,26 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab
+indent_size = 4
+max_line_length = 80
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{json,lua,yaml,yml}]
+indent_style = space
+indent_size = 2
+
+[.luacheckrc]
+indent_style = space
+indent_size = 2
+
+# Teaching test cases embed ASCII layout diagrams that mirror the in-game
+# combinator grid, so their comment lines can exceed the 80-column limit.
+[internal/testdata/*.go]
+max_line_length = off
