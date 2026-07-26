@@ -1,6 +1,6 @@
 [tools]
 golangci-lint = "2.12.2"
-lua = "5.4.8"
+lua = "5.5.0"
 "conda:markdownlint-cli2" = "0.23.1"
 uv = "0.11.32"
 
