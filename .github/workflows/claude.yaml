@@ -78,11 +78,11 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ github.token }}
-          track_progress: false
+          track_progress: true
           claude_args: >-
             --model claude-sonnet-5
             --effort high
-            --allowedTools "mcp__github_inline_comment__create_inline_comment,Read,Glob,Grep,Bash(gh pr view:*),Bash(gh pr diff:*)"
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,mcp__github_comment__update_claude_comment,Read,Glob,Grep,Bash(gh pr view:*),Bash(gh pr diff:*)"
           prompt: |
             Review only. Do not push commits, edit files or PR metadata,
             change labels, write repository content, or execute code,
@@ -123,8 +123,11 @@ jobs:
 
             Keep the review concise. Post each finding as an inline comment
             using mcp__github_inline_comment__create_inline_comment, ordered by
-            severity, with its impact and the smallest practical correction. If
-            there are no actionable findings, add no comments.
+            severity, with its impact and the smallest practical correction.
+            Update your tracking comment with
+            mcp__github_comment__update_claude_comment to hold a short summary:
+            list the findings by severity, or state `No actionable findings.`
+            when there are none.
 
   claude-status:
     name: Check Claude review result
