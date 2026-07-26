@@ -82,8 +82,7 @@ jobs:
           claude_args: >-
             --model claude-sonnet-5
             --effort high
-            --tools "Bash,Read,Glob,Grep"
-            --allowedTools "Read,Glob,Grep,Bash(gh pr view:*),Bash(gh pr diff:*)"
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Read,Glob,Grep,Bash(gh pr view:*),Bash(gh pr diff:*)"
           prompt: |
             Review only. Do not push commits, edit files or PR metadata,
             change labels, write repository content, or execute code,
@@ -122,10 +121,10 @@ jobs:
             isolation. Skip praise, style-only comments, speculative concerns,
             and pre-existing problems.
 
-            Keep the review concise. List findings by severity. Give each
-            finding a file and line, its impact, and the smallest practical
-            correction. If there are no actionable findings, reply:
-            `No actionable findings.`
+            Keep the review concise. Post each finding as an inline comment
+            using mcp__github_inline_comment__create_inline_comment, ordered by
+            severity, with its impact and the smallest practical correction. If
+            there are no actionable findings, add no comments.
 
   claude-status:
     name: Check Claude review result
