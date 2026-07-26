@@ -1,0 +1,14 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:best-practices',
+  ],
+  // Automerge is disabled until a build/test/lint CI workflow exists to
+  // validate dependency bumps. Re-enable with a required status check in place.
+  // automerge: true,
+  // major: {
+  //   automerge: false,
+  // },
+  minimumReleaseAge: '7 days',
+  rebaseWhen: 'behind-base-branch',
+}

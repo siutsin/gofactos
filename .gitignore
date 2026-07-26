@@ -1,0 +1,39 @@
+# Build output
+build/
+
+# Test binary
+*.test
+
+# Output of go coverage
+*.out
+*.prof
+
+# Local GOPATH
+.go/
+
+# Go workspace
+go.work
+go.work.sum
+
+# Dependency directory
+vendor/
+
+# Local Python virtual environments
+.venv/
+
+# Claude Code
+.claude/
+
+# Local scratch and agent memory
+.scratchpad/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
