@@ -1,0 +1,669 @@
+{
+  "blueprint": {
+    "item": "blueprint",
+    "label": "isEven",
+    "version": 562949954076672,
+    "entities": [
+      {
+        "entity_number": 1,
+        "name": "constant-combinator",
+        "position": {
+          "x": 0.5,
+          "y": 1.5
+        },
+        "control_behavior": {
+          "sections": {
+            "sections": [
+              {
+                "index": 1,
+                "filters": [
+                  {
+                    "index": 1,
+                    "type": "virtual",
+                    "name": "signal-A",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entity_number": 2,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 3,
+          "y": 1.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-A"
+            },
+            "operation": "%",
+            "second_signal": {
+              "type": "item",
+              "name": "iron-plate"
+            },
+            "output_signal": {
+              "type": "item",
+              "name": "copper-plate"
+            }
+          }
+        }
+      },
+      {
+        "entity_number": 3,
+        "name": "constant-combinator",
+        "position": {
+          "x": 0.5,
+          "y": 4.5
+        },
+        "control_behavior": {
+          "sections": {
+            "sections": [
+              {
+                "index": 1,
+                "filters": [
+                  {
+                    "index": 1,
+                    "type": "item",
+                    "name": "iron-plate",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 2
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entity_number": 4,
+        "name": "decider-combinator",
+        "position": {
+          "x": 6,
+          "y": 1.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "decider_conditions": {
+            "conditions": [
+              {
+                "first_signal": {
+                  "type": "item",
+                  "name": "copper-plate"
+                },
+                "comparator": "=",
+                "constant": 0
+              }
+            ],
+            "outputs": [
+              {
+                "signal": {
+                  "type": "item",
+                  "name": "copper-cable"
+                },
+                "copy_count_from_input": false
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entity_number": 5,
+        "name": "decider-combinator",
+        "position": {
+          "x": 6,
+          "y": 4.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "decider_conditions": {
+            "conditions": [
+              {
+                "first_signal": {
+                  "type": "item",
+                  "name": "copper-plate"
+                },
+                "comparator": "≠",
+                "constant": 0
+              }
+            ],
+            "outputs": [
+              {
+                "signal": {
+                  "type": "virtual",
+                  "name": "signal-info"
+                },
+                "copy_count_from_input": false
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entity_number": 6,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 9,
+          "y": 4.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-info"
+            },
+            "operation": "*",
+            "output_signal": {
+              "type": "item",
+              "name": "copper-cable"
+            },
+            "second_constant": -1
+          }
+        }
+      },
+      {
+        "entity_number": 7,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 12,
+          "y": 1.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "item",
+              "name": "steel-plate"
+            },
+            "operation": "*",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-dot"
+            },
+            "second_constant": 1
+          }
+        }
+      },
+      {
+        "entity_number": 8,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 12,
+          "y": 4.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "item",
+              "name": "iron-gear-wheel"
+            },
+            "operation": "*",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-dot"
+            },
+            "second_constant": 1
+          }
+        }
+      },
+      {
+        "entity_number": 9,
+        "name": "decider-combinator",
+        "position": {
+          "x": 15,
+          "y": 1.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "decider_conditions": {
+            "conditions": [
+              {
+                "first_signal": {
+                  "type": "item",
+                  "name": "copper-cable"
+                },
+                "comparator": "=",
+                "constant": 1
+              }
+            ],
+            "outputs": [
+              {
+                "signal": {
+                  "type": "virtual",
+                  "name": "signal-dot"
+                },
+                "copy_count_from_input": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entity_number": 10,
+        "name": "decider-combinator",
+        "position": {
+          "x": 15,
+          "y": 4.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "decider_conditions": {
+            "conditions": [
+              {
+                "first_signal": {
+                  "type": "item",
+                  "name": "copper-cable"
+                },
+                "comparator": "=",
+                "constant": -1
+              }
+            ],
+            "outputs": [
+              {
+                "signal": {
+                  "type": "virtual",
+                  "name": "signal-dot"
+                },
+                "copy_count_from_input": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entity_number": 11,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 18,
+          "y": 1.5
+        },
+        "direction": 4,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-dot"
+            },
+            "operation": "*",
+            "output_signal": {
+              "type": "item",
+              "name": "electronic-circuit"
+            },
+            "second_constant": 1
+          }
+        }
+      },
+      {
+        "entity_number": 12,
+        "name": "constant-combinator",
+        "position": {
+          "x": 0.5,
+          "y": 7.5
+        },
+        "control_behavior": {
+          "sections": {
+            "sections": [
+              {
+                "index": 1,
+                "filters": [
+                  {
+                    "index": 1,
+                    "type": "item",
+                    "name": "steel-plate",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entity_number": 13,
+        "name": "constant-combinator",
+        "position": {
+          "x": 0.5,
+          "y": 10.5
+        },
+        "control_behavior": {
+          "sections": {
+            "sections": [
+              {
+                "index": 1,
+                "filters": [
+                  {
+                    "index": 1,
+                    "type": "item",
+                    "name": "iron-gear-wheel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": -1
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "entity_number": 14,
+        "name": "display-panel",
+        "position": {
+          "x": 20.5,
+          "y": 0.5
+        },
+        "always_show": true,
+        "control_behavior": {
+          "parameters": [
+            {
+              "text": "",
+              "icon": {
+                "type": "virtual",
+                "name": "signal-check"
+              },
+              "condition": {
+                "first_signal": {
+                  "type": "item",
+                  "name": "electronic-circuit"
+                },
+                "comparator": "=",
+                "constant": 1
+              }
+            },
+            {
+              "text": "",
+              "icon": {
+                "type": "virtual",
+                "name": "signal-deny"
+              },
+              "condition": {
+                "first_signal": {
+                  "type": "item",
+                  "name": "electronic-circuit"
+                },
+                "comparator": "=",
+                "constant": -1
+              }
+            }
+          ]
+        }
+      },
+      {
+        "entity_number": 15,
+        "name": "display-panel",
+        "position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "text": "A = 1",
+        "icon": {
+          "type": "virtual",
+          "name": "signal-A"
+        },
+        "always_show": true
+      },
+      {
+        "entity_number": 16,
+        "name": "display-panel",
+        "position": {
+          "x": 2.5,
+          "y": 0.5
+        },
+        "text": "t0 = A % c0",
+        "always_show": true
+      },
+      {
+        "entity_number": 17,
+        "name": "display-panel",
+        "position": {
+          "x": 0.5,
+          "y": 3.5
+        },
+        "text": "c0 = 2",
+        "always_show": true
+      },
+      {
+        "entity_number": 18,
+        "name": "display-panel",
+        "position": {
+          "x": 5.5,
+          "y": 0.5
+        },
+        "text": "t1 = t0 = 0",
+        "always_show": true
+      },
+      {
+        "entity_number": 19,
+        "name": "display-panel",
+        "position": {
+          "x": 5.5,
+          "y": 3.5
+        },
+        "text": "if t0 ≠ 0",
+        "always_show": true
+      },
+      {
+        "entity_number": 20,
+        "name": "display-panel",
+        "position": {
+          "x": 8.5,
+          "y": 3.5
+        },
+        "text": "t1 = false",
+        "always_show": true
+      },
+      {
+        "entity_number": 21,
+        "name": "display-panel",
+        "position": {
+          "x": 11.5,
+          "y": 0.5
+        },
+        "text": "normalise c1",
+        "always_show": true
+      },
+      {
+        "entity_number": 22,
+        "name": "display-panel",
+        "position": {
+          "x": 11.5,
+          "y": 3.5
+        },
+        "text": "normalise c2",
+        "always_show": true
+      },
+      {
+        "entity_number": 23,
+        "name": "display-panel",
+        "position": {
+          "x": 14.5,
+          "y": 0.5
+        },
+        "text": "if t1 { merge = c1 }",
+        "always_show": true
+      },
+      {
+        "entity_number": 24,
+        "name": "display-panel",
+        "position": {
+          "x": 14.5,
+          "y": 3.5
+        },
+        "text": "if !t1 { merge = c2 }",
+        "always_show": true
+      },
+      {
+        "entity_number": 25,
+        "name": "display-panel",
+        "position": {
+          "x": 17.5,
+          "y": 0.5
+        },
+        "text": "i5 = merge",
+        "always_show": true
+      },
+      {
+        "entity_number": 26,
+        "name": "display-panel",
+        "position": {
+          "x": 0.5,
+          "y": 6.5
+        },
+        "text": "c1 = true",
+        "always_show": true
+      },
+      {
+        "entity_number": 27,
+        "name": "display-panel",
+        "position": {
+          "x": 0.5,
+          "y": 9.5
+        },
+        "text": "c2 = false",
+        "always_show": true
+      },
+      {
+        "entity_number": 28,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 6.5,
+          "y": 3.5
+        }
+      },
+      {
+        "entity_number": 29,
+        "name": "medium-electric-pole",
+        "position": {
+          "x": 6.5,
+          "y": 7.5
+        }
+      },
+      {
+        "entity_number": 30,
+        "name": "substation",
+        "quality": "legendary",
+        "position": {
+          "x": 10,
+          "y": 3
+        }
+      }
+    ],
+    "wires": [
+      [
+        4,
+        2,
+        5,
+        2
+      ],
+      [
+        5,
+        3,
+        6,
+        1
+      ],
+      [
+        6,
+        4,
+        4,
+        4
+      ],
+      [
+        7,
+        3,
+        9,
+        1
+      ],
+      [
+        8,
+        3,
+        10,
+        1
+      ],
+      [
+        9,
+        2,
+        10,
+        2
+      ],
+      [
+        9,
+        3,
+        11,
+        1
+      ],
+      [
+        10,
+        3,
+        11,
+        1
+      ],
+      [
+        1,
+        2,
+        2,
+        2
+      ],
+      [
+        3,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        4,
+        4,
+        2
+      ],
+      [
+        12,
+        2,
+        28,
+        2
+      ],
+      [
+        28,
+        2,
+        7,
+        2
+      ],
+      [
+        13,
+        2,
+        29,
+        2
+      ],
+      [
+        29,
+        2,
+        8,
+        2
+      ],
+      [
+        4,
+        4,
+        9,
+        2
+      ],
+      [
+        11,
+        4,
+        14,
+        2
+      ]
+    ]
+  }
+}
