@@ -7,7 +7,7 @@
     {
       description: 'Keep Lua below 5.5 while Luacheck requires Lua 5.4',
       matchManagers: ['mise'],
-      matchPackageNames: ['lua'],
+      matchDepNames: ['lua'],
       allowedVersions: '<5.5',
     },
   ],
