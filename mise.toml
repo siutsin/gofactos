@@ -1,8 +1,20 @@
 [tools]
 golangci-lint = "2.12.2"
-lua = "5.5.0"
-"conda:markdownlint-cli2" = "0.23.1"
+# Luacheck 1.2 fails to load under Lua 5.5; keep its runtime on Lua 5.4.
+lua = "5.4.8"
+node = "24.16.0"
+"npm:markdownlint-cli2" = "0.23.1"
 uv = "0.11.32"
 
+[env]
+UV_PROJECT_ENVIRONMENT = "{{config_root}}/build/uv"
+_.path = "{{config_root}}/build/tools/luacheck/bin"
+
 [hooks]
-postinstall = "luarocks install luacheck 1.2.0-1"
+postinstall = '''
+lua_dir="$(mise where lua)"
+luarocks \
+  --lua-dir "$lua_dir" \
+  --tree "$MISE_PROJECT_ROOT/build/tools/luacheck" \
+  install luacheck 1.2.0-1
+'''

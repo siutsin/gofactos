@@ -1,0 +1,60 @@
+version: "2"
+
+run:
+  allow-parallel-runners: true
+  relative-path-mode: gomod
+
+linters:
+  default: standard
+  enable:
+    - errchkjson
+    - errorlint
+    - exhaustive
+    - gocognit
+    - gosec
+    - govet
+    - loggercheck
+    - misspell
+    - modernize
+    - nilerr
+    - nilnesserr
+    - nilnil
+    - noctx
+    - nolintlint
+    - sloglint
+    - testifylint
+    - thelper
+    - unparam
+  settings:
+    errcheck:
+      check-blank: true
+      check-type-assertions: true
+    gocognit:
+      min-complexity: 15
+    govet:
+      enable:
+        - shadow
+    misspell:
+      locale: UK
+      ignore-rules:
+        - behavior
+        - color
+    nolintlint:
+      allow-unused: false
+      require-explanation: true
+      require-specific: true
+  exclusions:
+    rules:
+      # Demo files are loaded as source and preserve the teaching syntax.
+      - path: ^demo/
+        linters:
+          - modernize
+          - unused
+
+formatters:
+  enable:
+    - goimports # Includes gofmt formatting.
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/siutsin/gofactos
