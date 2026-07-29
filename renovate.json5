@@ -3,6 +3,14 @@
   extends: [
     'config:best-practices',
   ],
+  packageRules: [
+    {
+      description: 'Keep Lua below 5.5 while Luacheck requires Lua 5.4',
+      matchManagers: ['mise'],
+      matchPackageNames: ['lua'],
+      allowedVersions: '<5.5',
+    },
+  ],
   // Automerge is disabled until a build/test/lint CI workflow exists to
   // validate dependency bumps. Re-enable with a required status check in place.
   // automerge: true,
