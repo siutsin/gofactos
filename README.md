@@ -5,6 +5,8 @@ gofactos is built for my GopherCon 2026 talk,
 a supported Go function into a Factorio 2.0 blueprint and can print the
 function's static single assignment (SSA) form.
 
+![Fibonacci running in Factorio](assets/fibonacci.gif)
+
 gofactos uses the public, source-oriented
 [`golang.org/x/tools/go/ssa`][x-tools-ssa]. The Go compiler has a separate,
 lower-level SSA implementation at
@@ -20,22 +22,12 @@ keep it private to the compiler. See the [SSA guide](docs/ssa.md) for details.
 - Go 1.26 or later
 - Factorio 2.0 with Space Age's Quality mod enabled
 
-## Install From Source
-
-```sh
-make install
-```
-
-This builds `build/gofactos` and creates a symlink at
-`~/.local/bin/gofactos`. Ensure `~/.local/bin` is on `PATH`. Use `make build`
-to build without installing.
-
 ## Quick Start
 
-Generate a blueprint string:
+From the repository root, generate a blueprint string:
 
 ```sh
-gofactos blueprint demo/loop.go
+go run . blueprint --set n=8 demo/fibonacci.go
 ```
 
 Copy the output into Factorio's **Import string** dialog. See
@@ -44,8 +36,8 @@ Copy the output into Factorio's **Import string** dialog. See
 Inspect the blueprint JSON or SSA:
 
 ```sh
-gofactos blueprint --json demo/loop.go
-gofactos analyse demo/loop.go
+go run . blueprint --json --set n=8 demo/fibonacci.go
+go run . analyse demo/fibonacci.go
 ```
 
 The [specification](docs/spec.md) defines the supported Go subset.
