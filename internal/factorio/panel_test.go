@@ -33,7 +33,8 @@ func (l *labeller) labelTextFor(
 }
 
 // TestLabelText proves the fallback panel text is read straight from a
-// combinator's control behaviour for every combinator shape the modules emit.
+// combinator's control behaviour. Deciders are absent: every component that
+// emits one renders its own panel through combinatorLabel.
 func TestLabelText(t *testing.T) {
 	t.Parallel()
 	cases := []struct {
@@ -59,24 +60,6 @@ func TestLabelText(t *testing.T) {
 					SecondConstant: new(-1), OutputSignal: vsig("signal-D"),
 				}}},
 			text: "D = -A", icon: "signal-D",
-		},
-		{
-			name: "decider fixed one",
-			ent: entity{Name: "decider-combinator", ControlBehavior: &controlBehavior{
-				DeciderConditions: &deciderConditions{
-					Conditions: []deciderCondition{{FirstSignal: vsig("signal-A"), Comparator: "<", Constant: new(0)}},
-					Outputs:    []deciderOutput{{Signal: vsig("signal-E"), CopyCountFromInput: false}},
-				}}},
-			text: "E = A < 0", icon: "signal-E",
-		},
-		{
-			name: "decider copy count",
-			ent: entity{Name: "decider-combinator", ControlBehavior: &controlBehavior{
-				DeciderConditions: &deciderConditions{
-					Conditions: []deciderCondition{{FirstSignal: vsig("signal-F"), Comparator: "=", Constant: new(1)}},
-					Outputs:    []deciderOutput{{Signal: vsig("signal-G"), CopyCountFromInput: true}},
-				}}},
-			text: "G = G if F = true", icon: "signal-G",
 		},
 		{
 			name: "constant value",

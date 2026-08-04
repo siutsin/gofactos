@@ -57,13 +57,13 @@ func (l *labeller) labelTextForOwner(
 	if cb == nil {
 		return "", nil, false
 	}
+	// Deciders are absent: every component that emits one renders its own panel
+	// through combinatorLabel, so labelFor never reaches this reader for them.
 	switch ent.Name {
 	case constCombinatorName:
 		return l.constantLabelText(cb, owner)
 	case arithCombinatorName:
 		return l.arithmeticLabelText(cb.ArithmeticConditions, owner)
-	case deciderCombinatorName:
-		return l.deciderLabelText(cb.DeciderConditions, owner)
 	default:
 		return "", nil, false
 	}
@@ -142,30 +142,6 @@ func (l *labeller) arithmeticLabelText(
 			ac.SecondConstant,
 		),
 	), ac.OutputSignal, true
-}
-
-// deciderLabelText presents a circuit condition as a source-level decision.
-func (l *labeller) deciderLabelText(
-	dc *deciderConditions,
-	owner *instance,
-) (string, *signalID, bool) {
-	if dc == nil || len(dc.Conditions) == 0 || len(dc.Outputs) == 0 {
-		return "", nil, false
-	}
-	c, o := dc.Conditions[0], dc.Outputs[0]
-	if o.CopyCountFromInput {
-		return fmt.Sprintf(
-			"%s = %s if %s",
-			l.portSignalLabel(owner, "cond", o.Signal),
-			l.portSignalLabel(owner, "cond", o.Signal),
-			l.conditionLabel(c),
-		), o.Signal, true
-	}
-	return fmt.Sprintf(
-		"%s = %s",
-		l.portSignalLabel(owner, "cond", o.Signal),
-		l.conditionLabel(c),
-	), o.Signal, true
 }
 
 // labelFor centralises the choice between composite and generic teaching
@@ -300,25 +276,6 @@ func (l *labeller) operandLabel(sig *signalID, constant *int) string {
 		return strconv.Itoa(*constant)
 	}
 	return "?"
-}
-
-// conditionLabel presents 1/-1 boolean sentinels as the true/false concept the
-// audience needs to track.
-func (l *labeller) conditionLabel(c deciderCondition) string {
-	left := l.signalLabel(c.FirstSignal)
-	if c.SecondSignal == nil && c.Constant != nil && c.Comparator == "=" {
-		switch *c.Constant {
-		case 1:
-			return left + " = true"
-		case -1:
-			return left + " = false"
-		}
-	}
-	return fmt.Sprintf("%s %s %s",
-		left,
-		c.Comparator,
-		l.operandLabel(c.SecondSignal, c.Constant),
-	)
 }
 
 // conditionLabelForPorts retains contextual names in composite conditions.
