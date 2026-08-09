@@ -11,12 +11,10 @@
       allowedVersions: '<5.5',
     },
   ],
-  // Automerge is disabled until a build/test/lint CI workflow exists to
-  // validate dependency bumps. Re-enable with a required status check in place.
-  // automerge: true,
-  // major: {
-  //   automerge: false,
-  // },
+  automerge: true,
+  major: {
+    automerge: false,
+  },
   minimumReleaseAge: '7 days',
   rebaseWhen: 'behind-base-branch',
 }
