@@ -5,6 +5,8 @@ gofactos is built for my GopherCon 2026 talk,
 a supported Go function into a Factorio 2.0 blueprint and can print the
 function's static single assignment (SSA) form.
 
+[Download slides][slides].
+
 gofactos uses the public, source-oriented
 [`golang.org/x/tools/go/ssa`][x-tools-ssa]. The Go compiler has a separate,
 lower-level SSA implementation at
@@ -12,6 +14,7 @@ lower-level SSA implementation at
 keep it private to the compiler. See the [SSA guide](docs/ssa.md) for details.
 
 [compiler-ssa]: https://go.dev/src/cmd/compile/internal/ssa/
+[slides]: https://github.com/siutsin/gofactos/releases/download/gophercon-2026/slides.pptx
 [talk]: https://www.gophercon.com/agenda/session/1880654
 [x-tools-ssa]: https://pkg.go.dev/golang.org/x/tools/go/ssa
 
