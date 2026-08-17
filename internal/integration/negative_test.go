@@ -146,6 +146,12 @@ func TestNegativeCasesRejected(t *testing.T) {
 			file:    "recurrenceunsigned.go",
 			wantErr: "unsupported result type uint",
 		},
+		{
+			name:    "recursive comparison of two constants",
+			file:    "recursiveconstcompare.go",
+			fn:      "recursiveConstCompare",
+			wantErr: "comparison < between two constants is unsupported",
+		},
 	}
 	assertNegativeCaseInventory(t, cases)
 

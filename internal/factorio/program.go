@@ -318,8 +318,23 @@ func (b *recursiveProgramBuilder) validateInstruction(
 
 // validateBinary limits binary operations to combinator-supported operands.
 func (b *recursiveProgramBuilder) validateBinary(value *ssa.BinOp) error {
-	if _, ok := binOpMap[value.Op]; !ok {
+	entry, ok := binOpMap[value.Op]
+	if !ok {
 		return b.errorf("binary operator %s is unsupported", value.Op)
+	}
+	// A decider names a frame slot on its left-hand side and has no
+	// first-constant field, so a comparison between two constants has no slot
+	// to read. Reject it rather than silently compare slot 0. Arithmetic is
+	// unaffected: an arithmetic combinator takes a constant on both sides.
+	if entry.entityName == deciderCombinatorName {
+		_, constantX := value.X.(*ssa.Const)
+		_, constantY := value.Y.(*ssa.Const)
+		if constantX && constantY {
+			return b.errorf(
+				"comparison %s between two constants is unsupported",
+				value.Op,
+			)
+		}
 	}
 	return b.validateOperands(value.X, value.Y)
 }

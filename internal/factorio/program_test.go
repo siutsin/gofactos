@@ -360,6 +360,26 @@ func f(n int) int {
 			wantErr: "binary operator & is unsupported",
 		},
 		{
+			// SSA lifts lo and hi to constants but leaves the comparison
+			// unfolded, so it reaches validateBinary as `1:int < 2:int`.
+			// Writing `if 1 < 2` instead would be folded before SSA and
+			// would never reach the check.
+			name: "comparison between two constants",
+			source: `package main
+func f(n int) int {
+	lo := 1
+	hi := 2
+	if lo < hi {
+		if n <= 0 { return 0 }
+		return f(n-1) + 1
+	}
+	return 5
+}
+`,
+			fn:      "f",
+			wantErr: "comparison < between two constants is unsupported",
+		},
+		{
 			name: "unsupported unary operator",
 			source: `package main
 func f(n int, value bool) bool {
