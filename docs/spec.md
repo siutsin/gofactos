@@ -138,6 +138,9 @@ blueprint whose circuit runs inside Factorio.
   Mutual recursion fails.
 - Recursive code supports the listed operators, branches, value merges, and
   direct self calls. It may have several branches, calls, and returns.
+- A comparison cannot have a constant on both sides. A decider reads its left
+  operand from a frame slot, so it has no slot to name. Arithmetic is
+  unaffected and accepts a constant on both sides.
 - Each stack frame stores the current step and up to ten `int` or `bool` values.
   Thirteen frames hold the root and twelve nested calls.
 - A deeper call enters `STACK OVERFLOW` and shows no result.
