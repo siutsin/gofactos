@@ -1,5 +1,5 @@
 [tools]
-golangci-lint = "2.12.2"
+golangci-lint = "2.13.0"
 # Luacheck 1.2 fails to load under Lua 5.5; keep its runtime on Lua 5.4.
 lua = "5.4.8"
 node = "24.19.0"
