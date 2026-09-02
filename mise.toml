@@ -2,7 +2,7 @@
 golangci-lint = "2.13.1"
 # Luacheck 1.2 fails to load under Lua 5.5; keep its runtime on Lua 5.4.
 lua = "5.4.8"
-node = "24.19.0"
+node = "24.20.0"
 "npm:markdownlint-cli2" = "0.23.2"
 uv = "0.12.6"
 
