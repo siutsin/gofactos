@@ -39,7 +39,7 @@ wheels = [
 
 [[package]]
 name = "factorio-draftsman"
-version = "3.3.1"
+version = "4.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "attrs" },
@@ -50,9 +50,9 @@ dependencies = [
     { name = "thefuzz" },
     { name = "typing" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/82/8b/29f17f34be2e00793d43fb710ce90b0acfd3748fd52dcacb76052b86f5f7/factorio_draftsman-3.3.1.tar.gz", hash = "sha256:9d362df2ff113058add9d158bc4ebcc4bca3f4995b2abb3d331795bded8dc2e8", size = 1858335, upload-time = "2026-06-13T03:14:13.217Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/3c/a6/4bd34b638ac9ef5cddf05d9a55509013eb8ac00c72c93bedcbddce3a6594/factorio_draftsman-4.0.0.tar.gz", hash = "sha256:5f0b744f7b8121adf8291efb62681bd389c0d64e97d87a367258d99a1e022ca0", size = 1940299, upload-time = "2026-09-07T15:10:15.732Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ee/8d/cb8578953a1ab32ad60ec71f5c6f1b127035203806ec38e92de9ad50d2ef/factorio_draftsman-3.3.1-py3-none-any.whl", hash = "sha256:389b42cf0d67a18c299b1785b001d29450fa84e8cf2579843ed9713a205492d9", size = 2011758, upload-time = "2026-06-13T03:15:15.264Z" },
+    { url = "https://files.pythonhosted.org/packages/23/ad/d82e4d6b3d0a574ad551a5cb368e6cc5ef0e4d8f01ae389beced3402a634/factorio_draftsman-4.0.0-py3-none-any.whl", hash = "sha256:2f5a4133f553ed478b5a69bd4a363537a5956771bc1626e6916c8d85d7ae8311", size = 2098875, upload-time = "2026-09-07T15:10:17.654Z" },
 ]
 
 [[package]]
@@ -88,7 +88,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "factorio-draftsman", specifier = "==3.3.1" }]
+requires-dist = [{ name = "factorio-draftsman", specifier = "==4.0.0" }]
 
 [[package]]
 name = "lupa"
