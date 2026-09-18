@@ -3,5 +3,5 @@ name = "gofactos"
 version = "0.0.0"
 requires-python = ">=3.12"
 dependencies = [
-    "factorio-draftsman==3.3.1",
+    "factorio-draftsman==4.0.0",
 ]
