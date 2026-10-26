@@ -34,7 +34,7 @@ jobs:
       - name: Set up development tools
         uses: jdx/mise-action@fc42bcc7ddbf51124c30f95a877a0c5168a3bfde # v5.2.1
         with:
-          version: 2026.10.14
+          version: 2026.10.15
 
       - name: Run race-enabled test suite
         run: |
