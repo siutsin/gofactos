@@ -4,7 +4,7 @@ golangci-lint = "2.15.0"
 lua = "5.4.8"
 node = "24.22.1"
 "npm:markdownlint-cli2" = "0.24.0"
-uv = "0.13.3"
+uv = "0.13.4"
 
 [env]
 UV_PROJECT_ENVIRONMENT = "{{config_root}}/build/uv"
